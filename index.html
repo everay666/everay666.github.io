@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#111412">
+  <meta name="description" content="一位刚接触代码的新手，在某所不知名的 GBU 大学奋斗中。这是我的个人网站。">
+  <title>初来乍到 · 我的个人网站</title>
+  <style>
+    :root { --bg: #111412; --surface: #191d19; --text: #f0f2e9; --muted: #a7afa2; --accent: #c7f285; --line: #32392e; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; line-height: 1.8; }
+    a { color: inherit; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 6px; }
+    ::selection { background: var(--accent); color: var(--bg); }
+    .wrap { width: min(1080px, calc(100% - 48px)); margin: auto; }
+    header { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+    .brand { font-size: 15px; font-weight: 700; text-decoration: none; letter-spacing: .05em; }
+    .brand span { color: var(--accent); }
+    nav { display: flex; gap: 24px; }
+    nav a { text-decoration: none; color: var(--muted); font-size: 13px; }
+    nav a:hover { color: var(--accent); }
+    .hero { padding: 100px 0 80px; display: grid; grid-template-columns: 1.25fr 1fr; align-items: center; gap: 60px; }
+    .eyebrow { color: var(--accent); font-size: 11px; letter-spacing: .18em; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    .eyebrow::before { content: ""; display: inline-block; width: 7px; height: 7px; background: var(--accent); border-radius: 50%; margin-right: 10px; }
+    h1 { font-size: clamp(48px, 7vw, 82px); letter-spacing: -.055em; line-height: 1.17; margin: 28px 0; font-weight: 800; }
+    h1 span { color: var(--accent); }
+    .intro { color: var(--muted); max-width: 450px; font-size: 16px; }
+    .button { display: inline-flex; gap: 24px; align-items: center; margin-top: 22px; padding: 12px 22px; border-radius: 5px; background: var(--accent); color: var(--bg); font-weight: 700; font-size: 14px; text-decoration: none; transition: transform .2s; }
+    .button:hover { transform: translateY(-3px); }
+    .terminal { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; transform: rotate(2deg); box-shadow: 15px 22px 0 #0b0e0b; }
+    .terminal-head { padding: 14px 18px; display: flex; align-items: center; gap: 6px; border-bottom: 1px solid var(--line); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: #58604f; }
+    .dot:first-child { background: #c7f285; }
+    .file { margin-left: auto; font: 11px ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--muted); }
+    pre { margin: 0; padding: 30px 22px 34px; font: 13px/2 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+    .comment { color: #88917e; }
+    .key { color: #d5c9f8; }
+    .value { color: var(--accent); }
+    .terminal-foot { border-top: 1px solid var(--line); padding: 12px 22px; color: var(--muted); font: 11px ui-monospace, SFMono-Regular, Consolas, monospace; }
+    section { scroll-margin-top: 30px; }
+    .about { border-top: 1px solid var(--line); padding: 54px 0 70px; }
+    .section-head { display: flex; gap: 20px; align-items: baseline; margin-bottom: 30px; }
+    .number { font: 12px ui-monospace, SFMono-Regular, Consolas, monospace; color: var(--accent); }
+    h2 { font-size: 26px; margin: 0; letter-spacing: -.04em; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { border: 1px solid var(--line); border-radius: 8px; padding: 28px; background: linear-gradient(135deg, #1b2019, #151914); }
+    .card-label { color: var(--muted); font: 11px ui-monospace, SFMono-Regular, Consolas, monospace; letter-spacing: .08em; }
+    h3 { font-size: 21px; margin: 18px 0 10px; }
+    .card p { font-size: 14px; color: var(--muted); margin: 0; }
+    .note { border-top: 1px solid var(--line); padding: 46px 0 56px; display: grid; grid-template-columns: 1fr 2fr; gap: 36px; }
+    .note p { margin: 0; color: var(--muted); font-size: 16px; }
+    .note strong { color: var(--text); font-weight: 500; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 30px; display: flex; justify-content: space-between; gap: 16px; color: var(--muted); font-size: 11px; font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    @media (max-width: 800px) { .hero { grid-template-columns: 1fr; gap: 46px; padding: 65px 0; } .terminal { max-width: 520px; transform: none; box-shadow: 8px 10px 0 #0b0e0b; } .cards { grid-template-columns: 1fr; } .note { grid-template-columns: 1fr; gap: 20px; } }
+    @media (max-width: 420px) { .wrap { width: calc(100% - 36px); } nav { gap: 16px; } h1 { font-size: 50px; } footer { flex-direction: column; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .button { transition: none; } .button:hover { transform: none; } }
+  </style>
+</head>
+<body id="top">
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#top" aria-label="回到首页">hello<span>_</span>world</a>
+      <nav aria-label="主导航"><a href="#about">关于我</a><a href="#note">写在这里</a></nav>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <div class="eyebrow">BEGINNER MODE · ON</div>
+          <h1 id="hero-title">代码新手，<br>正在<span>出发。</span></h1>
+          <p class="intro">你好，欢迎来到我的小站。<br>一位刚接触代码的菜鸟，<br>在某所不知名的 GBU 大学奋斗中。</p>
+          <a class="button" href="#about">认识一下 <span aria-hidden="true">↘</span></a>
+        </div>
+        <div class="terminal" aria-label="用代码的样子做个自我介绍">
+          <div class="terminal-head"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="file">about_me.py</span></div>
+          <pre><code><span class="comment"># 每个故事，都有第一行代码。</span>
+
+me = {
+    <span class="key">"身份"</span>: <span class="value">"代码新手"</span>,
+    <span class="key">"坐标"</span>: <span class="value">"某所不知名的 GBU 大学"</span>,
+    <span class="key">"状态"</span>: <span class="value">"奋斗中"</span>
+}
+
+print(<span class="value">"Hello, world!"</span>)</code></pre>
+          <div class="terminal-foot">&gt; Hello, world! &nbsp; ✦</div>
+        </div>
+      </section>
+      <section class="about" id="about" aria-labelledby="about-title">
+        <div class="section-head"><span class="number">01 / ABOUT</span><h2 id="about-title">关于我，先说这么多。</h2></div>
+        <div class="cards">
+          <article class="card"><div class="card-label">IDENTITY</div><h3>刚入门的菜鸟</h3><p>刚刚接触代码，还在认识这个新世界。这个小站，也是一个起点。</p></article>
+          <article class="card"><div class="card-label">SOMEWHERE</div><h3>GBU，奋斗中</h3><p>在某所不知名的 GBU 大学。更多信息暂时保密，留一点神秘感。</p></article>
+          <article class="card"><div class="card-label">CURRENT STATUS</div><h3>未完待续……</h3><p>没有华丽的履历可以展示，先留下一句自我介绍，后面的故事慢慢写。</p></article>
+        </div>
+      </section>
+      <section class="note" id="note" aria-labelledby="note-title">
+        <div class="section-head"><span class="number">02 / NOTE</span><h2 id="note-title">写在这里</h2></div>
+        <p>这个网站不大，自我介绍也很短。<br><strong>“一位刚接触代码的菜鸟，在某所不知名的 GBU 大学奋斗中。”</strong><br>目前的故事，就是这样。谢谢你路过。</p>
+      </section>
+    </main>
+    <footer><span>HELLO, WORLD. 还在成长，持续更新。</span><a href="#top">回到顶部 ↑</a></footer>
+  </div>
+</body>
+</html>
